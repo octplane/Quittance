@@ -1,2 +1,24 @@
-<h1>Quittance#edit</h1>
-<p>Find me in app/views/quittance/edit.html.erb</p>
+<h1>éditer une quittance</h1>
+
+<%= form_for(@quittance) do |f| %>
+  <% if @quittance.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@location.errors.count, "error") %> prohibited this location from being saved:</h2>
+
+    <ul>
+    <% @location.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+
+
+
+<p>
+  <strong>Choisissez une location:</strong>
+  <%= select("quittance", "location", @locs.collect{ |l| [l["address"]+ " " + l["city"], l.id] }, { include_blank: false }) %>
+</p>
+
+<% end %>

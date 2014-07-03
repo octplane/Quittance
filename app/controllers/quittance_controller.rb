@@ -5,6 +5,7 @@ class QuittanceController < ApplicationController
   end
 
   def edit
-    Locations
+    @quittance = Quittance.new
+    @locs = Location.where(user: current_user)
   end
 end
